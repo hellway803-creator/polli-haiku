@@ -1,0 +1,10 @@
+{
+  "name": "polli-haiku",
+  "version": "0.1.0",
+  "description": "Haiku written by the Pollinations LLM and illustrated by the Pollinations image model (BYOP)",
+  "type": "module",
+  "scripts": {
+    "check": "node --check pollinations-client.js app.js"
+  },
+  "license": "MIT"
+}

@@ -22,7 +22,7 @@
 </head>
 <body>
 <h1>🌊 polli-haiku</h1>
-<p class="hint">Give a mood or topic — the <b>Pollinations LLM</b> writes a haiku and the <b>Pollinations image model</b> illustrates it. You pay your own Pollen with your key.</p>
+<p class="hint">Give a mood or topic — the <b>Pollinations LLM</b> writes a haiku and the <b>Pollinations image model</b> illustrates it. You pay your own Pollen through the Pollinations BYOP consent flow.</p>
 
 <div class="card">
   <input type="text" id="topic" placeholder="e.g. rainy morning in Jakarta, a tired cat, waiting for my code to compile">
@@ -34,10 +34,13 @@
 </div>
 
 <div class="card">
-  <input type="password" id="apiKey" placeholder="Pollinations API key (enter.pollinations.ai/keys)">
-  <p class="hint">Key stays in your browser. BYOP — the image & text calls are billed to your account.</p>
+  <div class="row">
+    <polli-connect app-key="pk_djDUr22y0r5komqD" budget="5" expiry="7" models="text,image"></polli-connect>
+  </div>
+  <p class="hint">Pollinations BYOP (Bring Your Own Pollen): approve a scoped key on the Pollinations consent screen and every text and image call is billed to <b>your</b> account. No secret key is pasted here, and you can revoke it any time.</p>
 </div>
 
+<script defer src="https://cdn.jsdelivr.net/npm/@pollinations/ui@0.1.0-alpha.20/dist/connect.js"></script>
 <script src="pollinations-client.js"></script>
 <script src="app.js"></script>
 </body>

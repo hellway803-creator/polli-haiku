@@ -2,10 +2,17 @@
     const polli = window.PolliClient;
     const el = (id) => document.getElementById(id);
 
+    // BYOP: scoped key from the official <polli-connect> widget (consent flow).
+    function getKey() {
+        const c = document.querySelector("polli-connect");
+        return (c && c.apiKey) || sessionStorage.getItem("polli_byop_key") || "";
+    }
+
     el("go").addEventListener("click", async () => {
         const topic = el("topic").value.trim();
-        const apiKey = el("apiKey").value.trim();
+        const apiKey = getKey();
         if (!topic) { el("status").textContent = "Type a topic first"; el("status").className = "err"; return; }
+        if (!apiKey) { el("status").textContent = "Approve a Pollinations key with the Connect button first — it costs your own Pollen, 5 max."; el("status").className = "err"; return; }
         try {
             el("go").disabled = true;
             el("haiku").textContent = "";
